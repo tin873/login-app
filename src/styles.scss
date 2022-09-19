@@ -1,1 +1,328 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    background-color: #fff;
+}
+.loader-blow-up {
+    width: 3em;
+    height: 3em;
+    position: absolute;
+    z-index: 9999;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+#toggle:checked ~ #sect .loader-blow-up {
+    filter: drop-shadow(0.1em 0.1em 0.1em rgba(0, 0, 0, 0.2));
+}
+.loader-blow-up:before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0.75em;
+    top: 0.75em;
+    border-radius: 50%;
+    background-color: #083d56;
+    width: 1.5em;
+    height: 1.5em;
+    z-index: 1;
+    -webkit-animation: blow-grow 4s infinite cubic-bezier(0.45, -0.43, 0.63, 1.94);
+    animation: blow-grow 4s infinite cubic-bezier(0.45, -0.43, 0.63, 1.94);
+}
+.loader-blow-up:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1rem;
+    height: 1rem;
+    z-index: 0;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-animation: blow-fade-in 1s infinite cubic-bezier(0.45, -0.43, 0.63, 1.94),
+        blow-shadow 1s infinite cubic-bezier(0.45, -0.43, 0.63, 1.94);
+    animation: blow-fade-in 1s infinite cubic-bezier(0.45, -0.43, 0.63, 1.94),
+        blow-shadow 1s infinite cubic-bezier(0.45, -0.43, 0.63, 1.94);
+}
+@-webkit-keyframes blow-fade-in {
+    0% {
+        opacity: 0;
+    }
+    2%,
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes blow-fade-in {
+    0% {
+        opacity: 0;
+    }
+    2%,
+    100% {
+        opacity: 1;
+    }
+}
+@-webkit-keyframes blow-shadow {
+    0% {
+        box-shadow: -4em 0 0 0.015em #083d56, 4em 0 0 0.015em #083d56;
+    }
+    75%,
+    100% {
+        box-shadow: 0 0 0 0.4em #083d56, 0 0 0 0.4em #083d56;
+    }
+}
+@keyframes blow-shadow {
+    0% {
+        box-shadow: -4em 0 0 0.015em #083d56, 4em 0 0 0.015em #083d56;
+    }
+    75%,
+    100% {
+        box-shadow: 0 0 0 0.4em #083d56, 0 0 0 0.4em #083d56;
+    }
+}
+@-webkit-keyframes blow-grow {
+    0% {
+        transform: scale(0);
+        background-color: #083d56;
+    }
+    25% {
+        transform: scale(0.5);
+        background-color: #083d56;
+    }
+    50% {
+        transform: scale(1);
+        background-color: #0e5f76;
+    }
+    75% {
+        transform: scale(1.5);
+        background-color: #0e5f76;
+    }
+    100% {
+        transform: scale(2);
+        background-color: #19a6cf;
+    }
+}
+@keyframes blow-grow {
+    0% {
+        transform: scale(0);
+        background-color: #083d56;
+    }
+    25% {
+        transform: scale(0.5);
+        background-color: #083d56;
+    }
+    50% {
+        transform: scale(1);
+        background-color: #0e5f76;
+    }
+    75% {
+        transform: scale(1.5);
+        background-color: #0e5f76;
+    }
+    100% {
+        transform: scale(2);
+        background-color: #19a6cf;
+    }
+}
+
+#waitting-init-app {
+    font-size: calc(1vw + 1vh - 0.6vmin);
+    font-family: "Podkova", serif;
+    color: #fff;
+    overflow-x: hidden;
+    background-color: #071a36;
+    width: 100vw;
+    min-height: 100vh;
+}
+.cursor-pointer {
+    cursor: pointer;
+}
+.p-button:focus {
+    outline: 0 none;
+    outline-offset: 0;
+    box-shadow: 0 0 0 0.2rem rgb(38 143 255 / 50%);
+}
+
+
+//Custom fieldset
+fieldset {
+    padding: 5px 10.5px;
+    min-height: 60px;
+}
+legend {
+    width: unset;
+    font-size: inherit;
+    margin-bottom: 0;
+}
+.p-fieldset.p-fieldset-toggleable .p-fieldset-legend a {
+    padding: 0.72rem 1.25rem;
+}
+.p-fieldset .p-fieldset-content {
+    padding: 0rem 0.5rem;
+}
+.ng-select .ng-select-container .ng-value-container .ng-placeholder {
+    top: 8px !important;
+}
+.ng-select.ng-select-single .ng-select-container .ng-value-container .ng-input {
+    top: 8px !important;
+}
+//scroll horizontal table
+.only-horizontal .p-datatable-scrollable-header-box {
+    padding-right: 0 !important;
+}
+.ng-select.custom-validate .ng-select-container {
+    border-color: #dc3545 !important;
+}
+label.col-form-label.required:after {
+    content: " *";
+    color: #dc3545 !important;
+}
+td {
+    word-break: break-all;
+}
+//custom validate border color input
+input[readonly], .ng-select.ng-select-disabled .ng-select-container {
+    background-color :rgba(0,0,0,0.05) !important;
+}
+.p-inputnumber-input.p-inputtext,
+.p-inputtextarea.p-inputtext,
+.p-calendar .p-inputtext.p-component,
+.p-inputtext.ng-dirty.ng-invalid {
+    border-color: #ced4da !important;
+}
+.mes-check.ng-invalid {
+    &.ng-select .ng-select-container,
+    & > .p-inputnumber > .p-inputnumber-input.p-inputtext .mes-check.ng-invalid.p-inputnumber-input.p-inputtext,
+    & > .p-password.p-inputwrapper > .p-password-input.p-inputtext,
+    &.p-inputtextarea,
+    &.p-inputtext.p-component,
+    .p-calendar .p-inputtext.p-component
+     {
+        border-color: #dc3545 !important;
+    }
+
+}
+
+// Custom paginator
+.paginator {
+    .painator-center {
+        .p-inputtext {
+            padding: 6px 0.75rem;
+        }
+    }
+}
+.p-paginator .p-paginator-current {
+    background-color: transparent;
+    border: 0 none;
+    color: #007bff;
+    min-width: 2.286em;
+    height: 2.286em;
+    margin: 0.143rem;
+    padding: 0 0.5rem;
+    margin-right: 1rem;
+}
+.p-paginator-page.p-paginator-element.p-link.p-ripple.ng-star-inserted.p-highlight {
+    pointer-events: none;
+}
+
+//Comfirm Message
+.p-dialog-header.ng-star-inserted {
+    border-bottom: none;
+}
+.p-dialog-footer.ng-star-inserted {
+    border-top: none;
+}
+.p-confirm-dialog-reject.p-ripple.p-button.p-component.ng-star-inserted {
+    background-color: #C82333;
+    border: none;
+    color: white;
+}
+.p-confirm-dialog-message {
+    margin-right: 1rem;
+}
+
+// Data list
+.p-datatable-header.ng-star-inserted {
+    background: none;
+    padding: 0 1rem 1rem 0;
+    border: none;
+}
+
+//Custom dialog
+.wrap-dialog {
+    .sm,
+    .md,
+    .lg {
+        width: 94vw;
+    }
+    @media all and (min-width: 500px) {
+        .sm {
+            width: 460px;
+        }
+    }
+    @media all and (min-width: 800px) {
+        .md {
+            width: 760px;
+        }
+    }
+    @media all and (min-width: 1100px) {
+        .lg {
+            width: 1060px;
+        }
+    }
+}
+//Custom Form
+.col-form-label {
+    font-size: 1rem;
+    color: #000;
+}
+
+//Data picker
+.p-datepicker-trigger.p-ripple.p-button.p-component.p-button-icon-only.ng-star-inserted{
+    border:none;
+    background: none;
+    color: black;
+    border-left: none;
+    position: absolute;
+    right: 0;
+}
+.p-inputtext.p-component.ng-star-inserted{
+    border-radius: 5px;
+    padding-right: 30px;
+}
+
+//Custom menu step by step
+.p-steps .p-steps-item .p-menuitem-link .p-steps-number {
+    border-radius: 50%;
+    background: #ffffff;
+    cursor: pointer;
+}
+
+.p-steps .p-steps-item.p-highlight .p-steps-number {
+    background: #007bff;
+    color: #ffffff;
+}
+.p-steps .p-steps-item .p-menuitem-link:not(.p-disabled):focus{
+    box-shadow: none;
+}
+// ... sau text
+.mes-ellipsis, .mes-ellipsis span.p-button-label{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+// page : Update theo doi tien do dau '...'
+#register-part4 span.p-button-label {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.disable-control{
+    pointer-events: none;
+    opacity: 0.7;
+}
+.iframe-title.page-title-box{
+    margin: 1.875rem 0 0 1.25rem;
+}
