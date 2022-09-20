@@ -1,5 +1,5 @@
-export interface CreateUserInput {
+export interface CreateUserDto {
     userName: string;
     email: string;
-    passwork: string;
+    password: string;
 }

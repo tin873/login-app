@@ -1,5 +1,5 @@
-import { CreateUserInput } from './models/createUser';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { CreateUserDto } from './models/createUser';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment as env } from 'src/environments/environment';
 
@@ -8,19 +8,16 @@ import { environment as env } from 'src/environments/environment';
     providedIn: 'root'
 })
 export class RegisterUserService {
+    constructor(private _http: HttpClient){
 
-
-    private API_BASE_URL: string;
-
-    constructor(
-        private _http: HttpClient
-    ) {
-        this.API_BASE_URL = env.remoteServiceBaseUrl !== undefined && env.remoteServiceBaseUrl !== null ? env.remoteServiceBaseUrl : "";
     }
 
-    createUser(input: CreateUserInput){
+    createUser(input: CreateUserDto){
         let url = `${env.remoteServiceBaseUrl}/api/user/CreateUser`;
-        const content = JSON.stringify(input);
-        return this._http.post<CreateUserInput>(url, content);
+        return this._http.post<any>(url, input);
+    }
+    getWether(){
+        let url = `${env.remoteServiceBaseUrl}/weather-forecast`;
+        return this._http.get<any>(url);
     }
 }

@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AccountModule } from 'src/Account/account.module';
 import { ServiceProxyModule } from 'src/shared/service-proxy/service-proxy.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -15,9 +16,8 @@ import { ServiceProxyModule } from 'src/shared/service-proxy/service-proxy.modul
   imports: [
     BrowserModule,
     AppRoutingModule,
-    LoginRoutingModule,
     FormsModule,
-    ServiceProxyModule,
+    HttpClientModule,
     AccountModule
   ],
   providers: [],
